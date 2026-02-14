@@ -3,31 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <title>PDF to Image – EasyUseHub</title>
-<meta name="description" content="Convert PDF pages to PNG images online. Free tool by EasyUseHub. Browser-based, secure, up to 15 MB.">
+<meta name="description" content="Convert PDF pages to PNG images online. Free browser-based tool by EasyUseHub. Fast, secure, up to 15 MB.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.16.105/build/pdf.min.js"></script>
 
 <style>
-body{font-family:Arial,sans-serif;background:#0f0f0f;color:#fff;margin:0;padding:0;text-align:center}
-.container{width:100%;max-width:600px;margin:40px auto;padding:20px;background:#111;border-radius:8px}
-h1{font-size:28px;margin-bottom:15px}
-p{color:#e5e5e5;font-size:16px;line-height:1.6;margin-bottom:20px}
-input[type=file]{padding:10px;font-size:16px;margin:15px 0}
-button{padding:12px 25px;background:#ef4444;color:#fff;border:none;border-radius:5px;font-size:16px;cursor:pointer;margin:10px}
-button:disabled{background:#555;cursor:not-allowed}
-.warning{color:red;font-weight:bold;display:none;margin:10px 0}
-.page-buttons{margin-top:20px;text-align:center}
-.page-buttons a{display:block;color:#007bff;text-decoration:none;font-weight:bold;margin:5px}
-.bottom-btns{margin-top:30px;text-align:center}
-.bottom-btns a{display:inline-block;padding:15px 28px;margin:8px;font-size:18px;font-weight:bold;color:#fff;text-decoration:none;border-radius:8px;transition:0.3s}
-.bottom-btns a.home-btn{background:#6b7280}
-.bottom-btns a.all-tools{background:#2563eb}
-.bottom-btns a:hover{opacity:0.85}
+body {
+  font-family: Arial,sans-serif;
+  background:#1a1a1a; /* Updated background color */
+  color:#fff;
+  margin:0;
+  padding:0;
+  text-align:center;
+}
+
+.container{
+  width:100%;
+  max-width:600px;
+  margin:40px auto;
+  padding:30px 20px;
+  background:#222;
+  border-radius:10px;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+h1{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+p{
+  color:#e0e0e0;
+  font-size:16px;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+input[type=file]{
+  padding:10px;
+  font-size:16px;
+  margin:15px 0;
+  border-radius:5px;
+}
+
+button{
+  padding:12px 25px;
+  background:#ef4444;
+  color:#fff;
+  border:none;
+  border-radius:5px;
+  font-size:16px;
+  cursor:pointer;
+  margin:10px;
+  transition:0.3s;
+}
+
+button:disabled{
+  background:#555;
+  cursor:not-allowed;
+}
+
+button:hover:not(:disabled){
+  opacity:0.85;
+}
+
+.warning{
+  color:red;
+  font-weight:bold;
+  display:none;
+  margin:10px 0;
+}
+
+.page-buttons{
+  margin-top:20px;
+  text-align:center;
+}
+
+.page-buttons a{
+  display:block;
+  color:#00bfff;
+  text-decoration:none;
+  font-weight:bold;
+  margin:5px;
+}
+
+.page-buttons a:hover{
+  text-decoration:underline;
+}
+
+/* Bottom buttons (centered) */
+.bottom-btns{
+  text-align:center;
+  margin-top:40px;
+}
+
+.bottom-btns a{
+  display:inline-block;
+  padding:15px 28px;
+  margin:8px;
+  font-size:18px;
+  font-weight:bold;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  transition:0.3s;
+}
+
+.bottom-btns a.home-btn{
+  background:#6b7280; /* Gray */
+}
+
+.bottom-btns a.all-tools{
+  background:#2563eb; /* Blue */
+}
+
+.bottom-btns a:hover{
+  opacity:0.85;
+}
+
+.ad-placeholder{
+  border:2px dashed #555;
+  padding:20px;
+  margin:25px 0;
+  color:#aaa;
+  font-size:14px;
+  text-align:center;
+  border-radius:0;
+}
+
 </style>
 </head>
-<body>
 
+<body>
 <div class="container">
 <h1>PDF to Image Tool</h1>
 <p>Upload a PDF (Max 15 MB) to convert each page into a PNG image. Each image will have a download button.</p>
