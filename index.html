@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PDF to Image – EasyUseHub</title>
-<meta name="description" content="Convert PDF pages to PNG images online. Free browser-based PDF to Image tool by EasyUseHub. Fast, secure, up to 15 MB.">
+<title>Free PDF Tools – EasyUseHub</title>
+<meta name="description" content="Free online PDF tools: Merge PDFs, Compress PDF, PDF to Word, Image to PDF, PDF Splitter, PDF to Image. Fast, secure, mobile-friendly. All tools free at EasyUseHub.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.16.105/build/pdf.min.js"></script>
@@ -17,30 +17,18 @@ body {
   padding:0;
   text-align:center;
 }
-
 .container{
-  max-width:900px;
+  max-width:1000px;
   margin:40px auto;
   padding:40px 25px;
   background:#222;
   border-radius:12px;
   box-shadow:0 4px 25px rgba(0,0,0,0.7);
 }
+h1{font-size:32px; margin-bottom:15px; color:#fff;}
+p{color:#dcdcdc; font-size:16px; line-height:1.6; margin-bottom:30px;}
 
-h1{
-  font-size:32px;
-  margin-bottom:15px;
-  color:#fff;
-}
-
-p{
-  color:#dcdcdc;
-  font-size:16px;
-  line-height:1.6;
-  margin-bottom:30px;
-}
-
-/* File input & convert button */
+/* PDF file upload & convert button */
 input[type=file]{padding:12px; font-size:16px; margin:15px 0; border-radius:6px;}
 button{
   padding:12px 28px;
@@ -58,44 +46,20 @@ button:hover:not(:disabled){opacity:0.85;}
 .warning{color:red; font-weight:bold; display:none; margin:10px 0;}
 
 /* PDF pages download links */
-.page-buttons{
-  margin-top:20px;
-  text-align:center;
-}
-.page-buttons a{
-  display:block;
-  color:#00bfff;
-  text-decoration:none;
-  font-weight:bold;
-  margin:6px 0;
-}
-.page-buttons a:hover{ text-decoration:underline; }
+.page-buttons{margin-top:20px; text-align:center;}
+.page-buttons a{display:block; color:#00bfff; text-decoration:none; font-weight:bold; margin:6px 0;}
+.page-buttons a:hover{text-decoration:underline;}
 
-/* PDF Tools buttons (centered middle) */
-.tools{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:20px;
-  margin:35px 0 25px 0;
-}
-.tool-btn{
-  flex:1 1 250px;
-  color:#fff;
-  text-decoration:none;
-  padding:18px 20px;
-  font-size:18px;
-  font-weight:bold;
-  text-align:center;
-  border-radius:8px;
-  transition:0.3s;
-}
+/* PDF Tools buttons */
+.tools{display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin:35px 0 25px 0;}
+.tool-btn{flex:1 1 250px; color:#fff; text-decoration:none; padding:18px 20px; font-size:18px; font-weight:bold; text-align:center; border-radius:8px; transition:0.3s;}
 .tool-btn:hover{opacity:0.9;}
 .merge{background:#2563eb;}
 .compress{background:#16a34a;}
 .word{background:#f59e0b;}
 .img2pdf{background:#ef4444;}
 .split{background:#007bff;}
+.toimage{background:#9c27b0;}
 
 /* Bottom Home Button */
 .home-btn{
@@ -111,36 +75,29 @@ button:hover:not(:disabled){opacity:0.85;}
   transition:0.3s;
 }
 .home-btn:hover{opacity:0.85;}
-.ad-placeholder{
-  border:2px dashed #555; 
-  padding:20px; 
-  margin:25px 0; 
-  color:#aaa; 
-  font-size:14px; 
-  text-align:center; 
-  border-radius:0;
-}
+.ad-placeholder{border:2px dashed #555; padding:20px; margin:25px 0; color:#aaa; font-size:14px; text-align:center; border-radius:0;}
 </style>
 </head>
 
 <body>
 <div class="container">
-  <h1>PDF to Image Tool</h1>
-  <p>Upload a PDF (Max 15 MB) to convert each page into PNG images. Each page will have a download button. Fast, secure, and browser-based.</p>
+  <h1>Free PDF Tools – EasyUseHub</h1>
+  <p>Use our free online PDF tools to merge, compress, convert PDF to Word, create PDFs from images, split PDF pages, or convert PDF to Image. Fast, secure, browser-based and mobile-friendly.</p>
 
+  <!-- PDF to Image Tool -->
   <input type="file" id="pdfFile" accept="application/pdf"><br>
   <button id="convertBtn" disabled>Convert PDF to Images</button>
   <p class="warning" id="warn">⚠️ File must be under 15 MB</p>
-
   <div class="page-buttons" id="pageButtons"></div>
 
-  <!-- PDF Tool Buttons (centered in middle) -->
+  <!-- PDF Tool Buttons -->
   <div class="tools">
     <a class="tool-btn merge" href="https://easyusehub.github.io/Merge-pdfs/" target="_blank">📄 Merge PDFs</a>
     <a class="tool-btn compress" href="https://compress-pdf-seven.vercel.app/compress-pdf.html" target="_blank">🗜️ Compress PDF</a>
     <a class="tool-btn word" href="https://pdf-to-word-tan.vercel.app/pdf-to-word.html" target="_blank">📃 PDF to Word</a>
     <a class="tool-btn img2pdf" href="https://easyusehub.github.io/Image-To-Pdf/" target="_blank">🖼️ Image to PDF</a>
     <a class="tool-btn split" href="https://easyusehub.github.io/PDF-Splitter/" target="_blank">📑 Split PDF</a>
+    <a class="tool-btn toimage" href="#" target="_self">🖼️ PDF to Image</a>
   </div>
 
   <!-- Bottom Home Button -->
