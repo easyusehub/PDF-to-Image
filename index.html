@@ -16,6 +16,8 @@ body {
   margin:0;
   padding:0;
   text-align:center;
+  position: relative;
+  overflow-x: hidden;
 }
 .container{
   max-width:900px;
@@ -28,8 +30,50 @@ body {
 h1{font-size:32px; margin-bottom:15px; color:#fff;}
 p{color:#dcdcdc; font-size:16px; line-height:1.6; margin-bottom:30px;}
 
+/* In-Page Push Ad Style */
+#push-notification {
+    position: fixed;
+    bottom: -150px; 
+    right: 20px;
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    z-index: 10000;
+    transition: bottom 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    cursor: pointer;
+    border-left: 5px solid #2563eb;
+    color: #333;
+}
+#push-notification.active { bottom: 20px; }
+#push-notification img { width: 50px; height: 50px; border-radius: 8px; margin-right: 12px; }
+.push-text { text-align: left; flex: 1; }
+.push-text b { font-size: 14px; color: #222; display: block; }
+.push-text p { font-size: 12px; color: #666; margin: 3px 0 0 0; }
+.close-push { position: absolute; top: 5px; right: 8px; font-size: 18px; color: #aaa; cursor: pointer; }
+
+/* Custom Ad Banner Style (As per your request) */
+.custom-ad-bridge {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    text-align: center;
+}
+.custom-ad-bridge:hover { transform: scale(1.02); }
+.ad-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; display: block; }
+.ad-desc { font-size: 14px; margin-bottom: 10px; display: block; opacity: 0.9; }
+.ad-btn { background: #fbbf24; color: #000; padding: 8px 20px; border-radius: 5px; font-weight: bold; text-transform: uppercase; display: inline-block; margin-top: 10px; }
+
 /* PDF file upload & convert button */
-input[type=file]{padding:12px; font-size:16px; margin:15px 0; border-radius:6px;}
+input[type=file]{padding:12px; font-size:16px; margin:15px 0; border-radius:6px; color: #000; background: #fff;}
 button{
   padding:12px 28px;
   background:#ef4444;
@@ -40,68 +84,80 @@ button{
   cursor:pointer;
   margin:10px 0;
   transition:0.3s;
+  font-weight: bold;
 }
 button:disabled{background:#555; cursor:not-allowed;}
 button:hover:not(:disabled){opacity:0.85;}
-.warning{color:red; font-weight:bold; display:none; margin:10px 0;}
+.warning{color:#ff4d4d; font-weight:bold; display:none; margin:10px 0;}
 
 /* PDF pages download links */
 .page-buttons{margin-top:20px; text-align:center;}
-.page-buttons a{display:block; color:#00bfff; text-decoration:none; font-weight:bold; margin:6px 0;}
-.page-buttons a:hover{text-decoration:underline;}
+.page-buttons a{display:block; color:#00bfff; text-decoration:none; font-weight:bold; margin:10px 0; padding: 10px; border: 1px solid #333; border-radius: 5px; transition: 0.3s;}
+.page-buttons a:hover{background: #333; text-decoration:underline;}
 
-/* All PDF Tools Button */
-.all-tools-btn{
+/* Navigation Buttons */
+.all-tools-btn, .home-btn{
   display:inline-block;
-  margin:35px auto;
+  margin:10px;
   padding:15px 30px;
   font-size:18px;
   font-weight:bold;
   color:#fff;
-  background:#2563eb;
   text-decoration:none;
   border-radius:8px;
   transition:0.3s;
 }
-.all-tools-btn:hover{opacity:0.85;}
-
-/* Bottom Home Button */
-.home-btn{
-  display:inline-block;
-  margin:30px auto 0;
-  padding:15px 30px;
-  font-size:18px;
-  font-weight:bold;
-  color:#fff;
-  background:#6b7280;
-  text-decoration:none;
-  border-radius:8px;
-  transition:0.3s;
-}
-.home-btn:hover{opacity:0.85;}
-.ad-placeholder{border:2px dashed #555; padding:20px; margin:25px 0; color:#aaa; font-size:14px; text-align:center; border-radius:0;}
+.all-tools-btn{background:#2563eb;}
+.home-btn{background:#6b7280;}
+.all-tools-btn:hover, .home-btn:hover{opacity:0.85;}
 </style>
 </head>
 
 <body>
-<div class="container">
-  <h1>PDF to Image Tool</h1>
-  <p>Upload a PDF (Max 15 MB) to convert each page into PNG images. Each page will have a download button. Fast, secure, browser-based.</p>
 
-  <!-- PDF to Image Tool -->
+<div id="push-notification" onclick="window.open('https://easyusehub.blogspot.com', '_blank')">
+    <span class="close-push" onclick="event.stopPropagation(); document.getElementById('push-notification').classList.remove('active');">&times;</span>
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968313.png" alt="icon">
+    <div class="push-text">
+        <b>🚀 46+ Pro Tools Ready!</b>
+        <p>ALL PDF TOOLS, Calculators, Image Tools at EasyUseHub.</p>
+    </div>
+</div>
+
+<div class="container">
+  
+  <div class="custom-ad-bridge" onclick="window.open('https://easyusehub.blogspot.com', '_blank')">
+      <span class="ad-title">🚀 Try 46+ Premium Free Web Tools!</span>
+      <span class="ad-desc">All PDF TOOLS, 16+ calculator, Age Calculator, BMI Tracker, Loan EMI etc - 100% Free</span>
+      <div class="ad-btn">Open EasyUseHub</div>
+  </div>
+
+  <h1>PDF to Image Tool</h1>
+  <p>Upload a PDF (Max 15 MB) to convert each page into PNG images. Fast, secure, browser-based.</p>
+
   <input type="file" id="pdfFile" accept="application/pdf"><br>
   <button id="convertBtn" disabled>Convert PDF to Images</button>
   <p class="warning" id="warn">⚠️ File must be under 15 MB</p>
+
+  <div class="custom-ad-bridge" style="background: linear-gradient(135deg, #059669, #10b981);" onclick="window.open('https://easyusehub.blogspot.com/p/image-compressor.html', '_blank')">
+      <span class="ad-title">⚡ High-Speed Image Compressor</span>
+      <span class="ad-desc">Compress your converted images without losing quality at EasyUseHub</span>
+      <div class="ad-btn" style="background: #fff; color: #059669;">Try Now</div>
+  </div>
+
   <div class="page-buttons" id="pageButtons"></div>
 
-  <!-- All PDF Tools Button -->
-  <a class="all-tools-btn" href="https://easyusehub.blogspot.com/p/free-pdf-tools-online.html=1" target="_blank">📚 All PDF Tools</a>
+  <div class="custom-ad-bridge" style="background: linear-gradient(135deg, #f59e0b, #d97706);" onclick="window.open('https://easyusehub.blogspot.com/p/ultimate-calculators-hub.html', '_blank')">
+      <span class="ad-title">🔢 Smart Online Calculators</span>
+      <span class="ad-desc">Loan EMI, Age Calculator, BMI Tracker, and Tax Calculators at your fingertips.</span>
+      <div class="ad-btn" style="background: #000; color: #fff;">Open Calculators</div>
+  </div>
 
-  <!-- Bottom Home Button -->
-  <a class="home-btn" href="https://easyusehub.blogspot.com/?m=1">🏠 Home</a>
+  <div style="margin-top: 20px;">
+    <a class="all-tools-btn" href="https://easyusehub.blogspot.com/p/free-pdf-tools-online.html=1" target="_blank">📚 All PDF Tools</a>
+    <a class="home-btn" href="https://easyusehub.blogspot.com/?m=1">🏠 Home</a>
+  </div>
 
-  <!-- Optional Ad Placeholder -->
-  <div class="ad-placeholder">Ad Placeholder</div>
 </div>
 
 <script>
@@ -130,12 +186,14 @@ convertBtn.addEventListener("click", async ()=>{
   const f=fileInput.files[0];
   if(!f) return;
 
+  // কনভার্ট শুরু হলে পুশ অ্যাড দেখাবে
+  setTimeout(() => { document.getElementById('push-notification').classList.add('active'); }, 1000);
+
   const fileReader = new FileReader();
   fileReader.onload = async function() {
     const typedarray = new Uint8Array(this.result);
     const loadingTask = pdfjsLib.getDocument(typedarray);
     const pdf = await loadingTask.promise;
-
     for(let i=1; i<=pdf.numPages; i++){
       const page = await pdf.getPage(i);
       const viewport = page.getViewport({ scale:2 });
@@ -150,7 +208,7 @@ convertBtn.addEventListener("click", async ()=>{
         const link = document.createElement("a");
         link.href = url;
         link.download = `page-${i}.png`;
-        link.textContent = `Download Page ${i}`;
+        link.textContent = `⬇️ Download Page ${i}`;
         pageButtons.appendChild(link);
       }, "image/png");
     }
@@ -160,3 +218,9 @@ convertBtn.addEventListener("click", async ()=>{
 </script>
 </body>
 </html>
+
+
+
+  
+
+    
